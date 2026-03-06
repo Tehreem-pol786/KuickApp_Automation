@@ -51,7 +51,7 @@ jobs:
 
     # 7️⃣ Run tests in parallel with HTML reporter
     - name: Run Playwright Tests
-      run: npx playwright test --workers=4 --reporter=html
+      run: npx playwright test 
 
     # 8️⃣ Upload Playwright report as artifact
     - name: Upload Playwright report

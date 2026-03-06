@@ -37,6 +37,7 @@ class AddUser
         this.push_button = "(//span[contains(@class,'ant-btn-icon')])[18]"
         this.slct_user_automation = "//li[contains(@title,'Automation User')]//input[contains(@type,'checkbox')]"
         this.add = "//button[@type='submit']"
+        this.searchicon = "//span[@aria-label='search']//*[name()='svg']"
 
     }
 
@@ -112,7 +113,7 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.locator(this.search).fill(automation)
-        await this.page.keyboard.press('Enter');
+        await this.page.click(this.searchicon);
 
         await this.page.waitForTimeout(1000);
         
@@ -152,7 +153,7 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.status_active)
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
         await this.page.locator(this.search_status_again).click()
         // await this.page.waitForTimeout(2000);

@@ -36,11 +36,11 @@ class AddDataset
         this.searchicon = "//span[@aria-label='search']//*[name()='svg']"
         this.editdataset = "//span[@title='edit dataset']//*[name()='svg']"
         // this.addfacultydata = "(//input[@id='dynamic-form_Text_20260225144643797_hbtrft'])[1]"
-        this.addfacultydata = "#dynamic-form_Text_20260305125241933_3pwtx6"
+        this.addfacultydata = "input[id^='dynamic-form_Text_']"
         this.searchdept = "(//input[@id='rc_select_0'])[1]"
         this.slctdept = "//div[@class='ant-select-item-option-content']"
         // this.addfacultynumber = "//input[@id='dynamic-form_Numbers_20260225144651332_ffv0gk']"
-        this.addfacultynumber = "#dynamic-form_Numbers_20260305125249314_rl0ab4"
+        this.addfacultynumber = "input[id^='dynamic-form_Numbers_']"
         this.createentery = "//span[normalize-space()='Create']"
         
     }

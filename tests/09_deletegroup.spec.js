@@ -8,8 +8,8 @@ test('Edit Group - Delete Group', async({page}) =>
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
         const automation = "automation";
-        const deletegroup = "Test Automation Group 2";
-        const automationgroup = "Test Automation Group 2";
+        const deletegroup = "Test Automation Group 3";
+        const automationgroup = "Test Automation Group 3";
         
         await page.goto("https://snd-pakoxygen.kuickapp.com/login/?callbackUrl=%2Fapplications%2F");
 
