@@ -44,6 +44,7 @@ class AddUser
     async CreatNewUser(polusername, polpassword, polfirstname, pollastname, polnewuseremail, polmanager, polnewpassword, polconfirmpassword)
     {
         
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
         // await this.page.waitForTimeout(2000);
 
@@ -61,6 +62,7 @@ class AddUser
 
         await this.page.click(this.add_user)
         // await this.page.waitForTimeout(2000);
+        await page.waitForLoadState('networkidle');
         
         await this.page.fill(this.first_name, polfirstname)
         // await this.page.waitForTimeout(2000);
@@ -97,6 +99,7 @@ class AddUser
         async UpdateUser(polusername, polpassword, automation)
     {
         
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
         // await this.page.waitForTimeout(2000);
 
@@ -110,6 +113,8 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.administration)
+
+        await page.waitForLoadState('networkidle');
         // await this.page.waitForTimeout(2000);
 
         await this.page.locator(this.search).fill(automation)

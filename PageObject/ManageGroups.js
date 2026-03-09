@@ -49,6 +49,7 @@ class Group
     async AddNewGroup(polusername, polpassword, automationgroup, polfaizan, polautomation)
     {
         
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
         // await this.page.waitForTimeout(2000);
 
@@ -62,6 +63,7 @@ class Group
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.administration)
+        await page.waitForLoadState('networkidle');
 
         await this.page.click(this.managegroups)
         // await this.page.waitForTimeout(1000);
@@ -69,6 +71,8 @@ class Group
         await expect(this.page.locator(this.managegroupheading)).toBeVisible();
 
         await this.page.click(this.addgroup)
+
+        await page.waitForLoadState('networkidle');
 
         await expect(this.page.locator(this.groupname)).toBeVisible();
 
@@ -122,6 +126,7 @@ class Group
      async EditGroup_DeleteUserFromGroup (polusername, polpassword, automation, automationgroup, polautomation)
     {
         // Delete user from the group and check it in user
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
@@ -131,6 +136,7 @@ class Group
         await this.page.click(this.avatar)
 
         await this.page.click(this.administration)
+        await page.waitForLoadState('networkidle');
    
         await this.page.locator(this.search).fill(automation)
         await this.page.locator(this.clicksearch).click()
@@ -184,7 +190,8 @@ class Group
      async EditGroup_AddUserFromGroup (polusername, polpassword, automation, automationgroup, polautomation)
     {
          // Add user from the group and then check it in the user
-        await this.page.fill(this.username, polusername)
+        await page.waitForLoadState('networkidle');
+         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
 
@@ -241,6 +248,7 @@ class Group
     async EditGroup_DeleteGroupFromProfile (polusername, polpassword, automation, automationgroup, polautomation)
     {
         // Delete group from the user and check it in group
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
@@ -290,6 +298,7 @@ class Group
     async EditGroup_DeleteGroup (polusername, polpassword, automationgroup, deletegroup)
     {
         // Delete group from the user and check it in group
+        await page.waitForLoadState('networkidle');
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
