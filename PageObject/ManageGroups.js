@@ -30,7 +30,7 @@ class Group
         this.editgroup = "(//div[@class='ant-space-item'])[1]"
         this.clicksearch = "(//button[@class='ant-btn css-8c526y ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only ant-input-search-button'])[1]"
         this.waitforsearchtoappear = "(//span[@class='ant-input-affix-wrapper css-8c526y ant-input-outlined'])[1]"
-        this.delete = "//li[contains(@title,'Automation 13 User')]//span[contains(@aria-label,'delete')]//*[name()='svg']"
+        this.delete = "//li[contains(@title,'Automation 12 User')]//span[contains(@aria-label,'delete')]//*[name()='svg']"
         this.update = "//button[@type='submit']"
         this.closesuccessmessage = "//a[@aria-label='Close']"
         this.waitforgroupcontainer = "(//div[contains(@class,'ant-select-selector')])[5]"
@@ -63,6 +63,7 @@ class Group
         await this.page.click(this.administration)
 
         await this.page.click(this.managegroups)
+        await this.page.waitForTimeout(1000);
 
         await expect(this.page.locator(this.managegroupheading)).toBeVisible();
 
