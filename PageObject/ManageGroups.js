@@ -12,7 +12,7 @@ class Group
         this.administration="(//a[normalize-space()='Administration'])[1]"
         this.managegroups = "//a[normalize-space()='Manage Groups']"
         this.addgroup = "(//button[@class='ant-btn css-8c526y ant-btn-primary ant-btn-color-primary ant-btn-variant-solid'])[1]"
-        this.groupname = "#gName"
+        this.groupname = "//input[@id='gName']"
         this.search_user = "(//input[contains(@placeholder,'Search here')])[1]"
         this.slct_user_faizan = "//span[normalize-space()='Muhammad Faizan']"
         // this.push_button = "(//span[contains(@class,'ant-btn-icon')])[18]"
@@ -66,7 +66,8 @@ class Group
         await this.page.click(this.addgroup)
         // await this.page.waitForTimeout(2000);
 
-        await this.page.waitForLoadState('networkidle')
+        // await this.page.waitForLoadState('networkidle')
+        await expect(this.page.locator(this.groupname)).toBeVisible({ timeout: 15000 });
         
         await this.page.locator(this.groupname).fill(automationgroup)
         // await this.page.waitForTimeout(2000);
