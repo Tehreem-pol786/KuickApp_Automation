@@ -163,7 +163,7 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.status_inactive)
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
 }
 
