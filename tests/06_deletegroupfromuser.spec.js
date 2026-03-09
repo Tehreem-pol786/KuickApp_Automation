@@ -7,7 +7,7 @@ test('Edit Group - Delete Group From User', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const automation = "automation.user17";
+        const automation = "automation.user18";
         const automationgroup = "Test Automation Group 3";
         const polautomation = "automation"
         
