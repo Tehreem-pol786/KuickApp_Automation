@@ -7,7 +7,7 @@ test('Add New List', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const polnewlistname = "Automation List Regression 10";
+        const polnewlistname = "Automation List Regression 11";
         const pollistitem0 = "Automation item 1";
         const pollistitem1 = "Automation item 2";
         const pollistitem2 = "Automation item 3";
