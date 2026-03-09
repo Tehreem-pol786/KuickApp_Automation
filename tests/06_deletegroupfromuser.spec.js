@@ -7,9 +7,9 @@ test('Edit Group - Delete Group From User', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const automation = "automation.user20";
+        const automation = "automation.user23";
         const automationgroup = "Test Automation Group 3";
-        const polautomation = "automation"
+        const polautomation = "automation 23"
         
         await page.goto("https://snd-pakoxygen.kuickapp.com/login/?callbackUrl=%2Fapplications%2F");
 

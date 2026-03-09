@@ -14,23 +14,24 @@ class Group
         this.addgroup = "(//button[@class='ant-btn css-8c526y ant-btn-primary ant-btn-color-primary ant-btn-variant-solid'])[1]"
         this.groupname = "//input[@id='gName']"
         this.search_user = "(//input[contains(@placeholder,'Search here')])[1]"
-        this.slct_user_faizan = "//span[normalize-space()='Muhammad Faizan']"
+        // this.slct_user_faizan = "//span[normalize-space()='Muhammad Faizan']"
+        this.slct_user_faizan = "//span[normalize-space()='Muhammad Faizan b1']"
         // this.push_button = "(//span[contains(@class,'ant-btn-icon')])[18]"
         this.push_button = "//span[@class='ant-btn-icon']//span[@aria-label='right']//*[name()='svg']"
-        this.slct_user_automation = "//li[contains(@title,'Automation 20 User')]//input[contains(@type,'checkbox')]"
+        this.slct_user_automation = "//li[@title='Automation 23 User']//input[@type='checkbox']"
         this.add = "//button[@type='submit']"
         this.search = "//input[@placeholder='Search']"
         this.edit = "(//*[name()='svg'])[14]"
         this.close = "(//span[@aria-label='Close'])[2]"
         this.check_group = "(//div[@class='ant-select-selector'])[5]"
-        this.waitforuser = "//td[normalize-space()='automation.user20@mailinator.com']"
+        this.waitforuser = "//td[normalize-space()='automation.user23@mailinator.com']"
         this.waitforgroupname = "(//span[@title='Test Automation Group 3'])[2]"
         this.searchgroup = "//input[@placeholder='Search']"
         this.waitforgrouptoappear = "//td[normalize-space()='Test Automation Group 3']"
         this.editgroup = "(//div[@class='ant-space-item'])[1]"
         this.clicksearch = "(//button[@class='ant-btn css-8c526y ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only ant-input-search-button'])[1]"
         this.waitforsearchtoappear = "(//span[@class='ant-input-affix-wrapper css-8c526y ant-input-outlined'])[1]"
-        this.delete = "//li[contains(@title,'Automation 20 User')]//span[contains(@aria-label,'delete')]//*[name()='svg']"
+        this.delete = "//li[contains(@title,'Automation 23 User')]//span[contains(@aria-label,'delete')]//*[name()='svg']"
         this.update = "//button[@type='submit']"
         this.closesuccessmessage = "//a[@aria-label='Close']"
         this.waitforgroupcontainer = "(//div[contains(@class,'ant-select-selector')])[5]"
@@ -68,6 +69,8 @@ class Group
         await expect(this.page.locator(this.managegroupheading)).toBeVisible();
 
         await this.page.click(this.addgroup)
+
+        await expect(this.page.locator(this.groupname)).toBeVisible();
 
         // await this.page.waitForLoadState('networkidle')
         
