@@ -7,9 +7,9 @@ test('Update User', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const polfirstname = "Automation 18";
+        const polfirstname = "Automation 19";
         const pollastname = "User";
-        const polnewuseremail = "automation.user18@mailinator.com"
+        const polnewuseremail = "automation.user19@mailinator.com"
         const polmanager = "syed waseem sajjad"
         const polnewpassword = "P@kistan01"
         const polconfirmpassword = "P@kistan01";
