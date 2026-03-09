@@ -9,7 +9,7 @@ test('Manage Group', async({page}) =>
         const polpassword = "P@kistan01";
         const automationgroup = "Test Automation Group 3";
         const polfaizan = "Faizan";
-        const polautomation = "automation 6"
+        const polautomation = "automation 7"
         
         await page.goto("https://snd-pakoxygen.kuickapp.com/login/?callbackUrl=%2Fapplications%2F");
 

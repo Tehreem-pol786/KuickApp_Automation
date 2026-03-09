@@ -35,7 +35,7 @@ class AddUser
         this.search_user = "(//input[contains(@placeholder,'Search here')])[1]"
         this.slct_user_faizan = "//span[normalize-space()='Muhammad Faizan']"
         this.push_button = "(//span[contains(@class,'ant-btn-icon')])[18]"
-        this.slct_user_automation = "//li[contains(@title,'Automation User')]//input[contains(@type,'checkbox')]"
+        this.slct_user_automation = "//li[contains(@title,'Automation 7 User')]//input[contains(@type,'checkbox')]"
         this.add = "//button[@type='submit']"
         this.searchicon = "//span[@aria-label='search']//*[name()='svg']"
 
@@ -119,6 +119,8 @@ class AddUser
         
         await this.page.click(this.edit)
         // await this.page.waitForTimeout(2000);
+
+        await this.page.waitForLoadState('networkidle')
 
         await this.page.click(this.slct_role_admin1)
         // await this.page.waitForTimeout(2000);
