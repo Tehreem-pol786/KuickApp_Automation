@@ -46,42 +46,34 @@ class Group
         this.managegroupheading = "//h4[normalize-space()='Manage Groups']"
     }
 
-    async AddNewGroup(polusername, polpassword, automationgroup, polfaizan, polautomation)
-    {
+    // async AddNewGroup(polusername, polpassword, automationgroup, polfaizan, polautomation)
+    // {
         
-        await page.waitForLoadState('networkidle');
-        await this.page.fill(this.username, polusername)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.fill(this.username, polusername)
 
-        await this.page.fill(this.password, polpassword)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.fill(this.password, polpassword)
 
-        await this.page.click(this.loginbutton)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.loginbutton)
         
-        await this.page.click(this.avatar)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.avatar)
 
-        await this.page.click(this.administration)
-        await page.waitForLoadState('networkidle');
+    //     await this.page.click(this.administration)
 
-        await this.page.click(this.managegroups)
-        // await this.page.waitForTimeout(1000);
+    //     await this.page.click(this.managegroups)
 
-        await expect(this.page.locator(this.managegroupheading)).toBeVisible();
+    //     await expect(this.page.locator(this.managegroupheading)).toBeVisible();
 
-        await this.page.click(this.addgroup)
+    //     await this.page.click(this.addgroup) //This then from WAIT
 
-        await page.waitForLoadState('networkidle');
 
-        await expect(this.page.locator(this.groupname)).toBeVisible();
+    //     // await expect(this.page.locator(this.groupname)).toBeVisible();
 
-        // await this.page.waitForLoadState('networkidle')
+    //     // await this.page.waitForLoadState('networkidle')
         
-        await this.page.locator(this.groupname).fill(automationgroup)
-        //  await this.page.click(this.addgroup);
+    //     // await this.page.locator(this.groupname).fill(automationgroup)
+    //     //  await this.page.click(this.addgroup);
 
-    // --- WAIT FOR GROUP NAME INPUT TO BE READY ---
+    // // --- WAIT FOR GROUP NAME INPUT TO BE READY ---
     //     const groupInput = this.page.locator(this.groupname);
     //     await groupInput.waitFor({ state: 'attached', timeout: 30000 });
     //     await groupInput.waitFor({ state: 'visible', timeout: 30000 });
@@ -98,35 +90,85 @@ class Group
     //     await groupInput.fill(automationgroup);
     //     await this.page.waitForTimeout(2000);
 
-        await this.page.fill(this.search_user, polfaizan)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.fill(this.search_user, polfaizan)
 
-        await this.page.click(this.slct_user_faizan)
-        // await this.page.waitForTimeout(3000);
+    //     await this.page.click(this.slct_user_faizan)
         
-        await this.page.click(this.push_button)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.push_button)
 
-        await this.page.fill(this.search_user, polautomation)
+    //     await this.page.fill(this.search_user, polautomation)
 
-        // await this.page.waitForLoadState('networkidle')
-        await this.page.waitForTimeout(1000);
+    //     await this.page.waitForTimeout(1000);
 
-        await this.page.click(this.slct_user_automation)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.slct_user_automation)
 
-        await this.page.click(this.push_button)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.push_button)
 
-        await this.page.click(this.add)
-        // await this.page.waitForTimeout(2000);
+    //     await this.page.click(this.add)
 
-    }
+    async AddNewGroup(polusername, polpassword, automationgroup, polfaizan, polautomation) {
+
+    // --- LOGIN ---
+    await this.page.fill(this.username, polusername);
+    await this.page.fill(this.password, polpassword);
+    await this.page.click(this.loginbutton);
+
+    // Wait until avatar is visible before clicking
+    await expect(this.page.locator(this.avatar)).toBeVisible({ timeout: 30000 });
+    await this.page.click(this.avatar);
+
+    // Navigate to Administration > Manage Groups
+    await this.page.click(this.administration);
+    await this.page.click(this.managegroups);
+
+    // Wait for Manage Groups heading to confirm page loaded
+    await expect(this.page.locator(this.managegroupheading)).toBeVisible({ timeout: 30000 });
+
+    // --- OPEN ADD GROUP MODAL ---
+    await this.page.click(this.addgroup);
+
+    // Wait for Group Name input to be visible and enabled
+    const groupInput = this.page.locator(this.groupname);
+    await expect(groupInput).toBeVisible({ timeout: 30000 });
+    await expect(groupInput).toBeEnabled({ timeout: 30000 });
+
+    // Wait for any loading spinners to disappear
+    const spinners = this.page.locator('.ant-spin-spinning');
+    await expect(spinners).toHaveCount(0, { timeout: 30000 });
+
+    // Fill the group name
+    await groupInput.fill(automationgroup);
+
+    // --- ADD USERS TO GROUP ---
+    const addUser = async (username, selector) => {
+        await this.page.fill(this.search_user, username);
+        await expect(this.page.locator(selector)).toBeVisible({ timeout: 20000 });
+        await this.page.click(selector);
+        await expect(this.page.locator(this.push_button)).toBeEnabled({ timeout: 10000 });
+        await this.page.click(this.push_button);
+    };
+
+    // Add first user
+    await addUser(polfaizan, this.slct_user_faizan);
+
+    // Add second user
+    await addUser(polautomation, this.slct_user_automation);
+
+    // --- FINALIZE GROUP CREATION ---
+    await expect(this.page.locator(this.add)).toBeEnabled({ timeout: 10000 });
+    await this.page.click(this.add);
+
+    // Optional: wait until the modal disappears (group created)
+    await expect(groupInput).toHaveCount(0, { timeout: 30000 });
+}
+      
+
+    // }
 
      async EditGroup_DeleteUserFromGroup (polusername, polpassword, automation, automationgroup, polautomation)
     {
         // Delete user from the group and check it in user
-        await page.waitForLoadState('networkidle');
+       
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
@@ -136,7 +178,6 @@ class Group
         await this.page.click(this.avatar)
 
         await this.page.click(this.administration)
-        await page.waitForLoadState('networkidle');
    
         await this.page.locator(this.search).fill(automation)
         await this.page.locator(this.clicksearch).click()
@@ -190,8 +231,8 @@ class Group
      async EditGroup_AddUserFromGroup (polusername, polpassword, automation, automationgroup, polautomation)
     {
          // Add user from the group and then check it in the user
-        await page.waitForLoadState('networkidle');
-         await this.page.fill(this.username, polusername)
+        
+        await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
 
@@ -248,7 +289,7 @@ class Group
     async EditGroup_DeleteGroupFromProfile (polusername, polpassword, automation, automationgroup, polautomation)
     {
         // Delete group from the user and check it in group
-        await page.waitForLoadState('networkidle');
+       
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
@@ -298,7 +339,7 @@ class Group
     async EditGroup_DeleteGroup (polusername, polpassword, automationgroup, deletegroup)
     {
         // Delete group from the user and check it in group
-        await page.waitForLoadState('networkidle');
+        
         await this.page.fill(this.username, polusername)
 
         await this.page.fill(this.password, polpassword)
