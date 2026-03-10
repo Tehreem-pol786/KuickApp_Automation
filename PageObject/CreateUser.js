@@ -88,7 +88,7 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.fill(this.confirm_password, polconfirmpassword)
-        await this.page.waitForTimeout(2000);
+        // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.submit)
         // await this.page.waitForTimeout(2000);
