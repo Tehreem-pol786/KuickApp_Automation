@@ -7,7 +7,7 @@ test('Add New List', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const polnewlistname = "Automation List Regression 22";
+        const polnewlistname = "Automation List Regression 23";
         
         await page.goto("https://snd-pakoxygen.kuickapp.com/login/?callbackUrl=%2Fapplications%2F");
 
