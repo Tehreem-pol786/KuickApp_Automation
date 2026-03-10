@@ -79,7 +79,7 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.role)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
         await this.page.click(this.slct_role_admin)
         // await this.page.waitForTimeout(2000);
@@ -120,9 +120,9 @@ class AddUser
         await this.page.waitForTimeout(1000);
         
         await this.page.click(this.edit)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
-        await this.page.waitForLoadState('networkidle')
+        // await this.page.waitForLoadState('networkidle')
 
         await this.page.click(this.slct_role_admin1)
         // await this.page.waitForTimeout(2000);
