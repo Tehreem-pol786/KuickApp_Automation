@@ -61,10 +61,10 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.add_user)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
         
         await this.page.fill(this.first_name, polfirstname)
-        // await this.page.waitForTimeout(2000);
+        // await this.page.waitForTimeout(1000);
 
         await this.page.fill(this.last_name, pollastname)
         // await this.page.waitForTimeout(2000);
@@ -76,19 +76,19 @@ class AddUser
         // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.slct_manager)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
         await this.page.click(this.role)
         await this.page.waitForTimeout(1000);
 
         await this.page.click(this.slct_role_admin)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
         await this.page.fill(this.new_password, polnewpassword)
         // await this.page.waitForTimeout(2000);
 
         await this.page.fill(this.confirm_password, polconfirmpassword)
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(1000);
 
         await this.page.click(this.submit)
         // await this.page.waitForTimeout(2000);
