@@ -7,7 +7,7 @@ test('Add New List', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const polnewlistname = "Automation Users List 30";
+        const polnewlistname = "Automation Users List 32";
         const pollistitem0 = "Alex Jane";
         const pollistitem1 = "Mark Allen"
         const pollistitem2 = "Sophie Lee";
