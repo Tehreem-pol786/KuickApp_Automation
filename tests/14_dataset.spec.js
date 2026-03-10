@@ -7,7 +7,7 @@ test('Add New Dataset', async({page}) =>
 
         const polusername = "Tehreem.Fatima@pakoxygen.com";
         const polpassword = "P@kistan01";
-        const poldatasetname = "Automation Dataset 35";
+        const poldatasetname = "Automation Dataset 37";
         const poldatasetdescription = "Automation dataset for testing purpose";
         const poltextfieldname = "Faculty Name"
         const poltextfieldhelpertext = "Member Name"

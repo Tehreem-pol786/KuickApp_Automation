@@ -1,3 +1,4 @@
+const { test, expect } = require ('@playwright/test');
 class AddUser
 {
 
@@ -38,6 +39,7 @@ class AddUser
         this.slct_user_automation = "//li[contains(@title,'Automation 7 User')]//input[contains(@type,'checkbox')]"
         this.add = "//button[@type='submit']"
         this.searchicon = "//span[@aria-label='search']//*[name()='svg']"
+        this.successmessage = "//div[contains(text(),'User added successfully !')]"
 
     }
 
@@ -46,34 +48,25 @@ class AddUser
         
     
         await this.page.fill(this.username, polusername)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.fill(this.password, polpassword)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.loginbutton)
-        // await this.page.waitForTimeout(2000);
         
         await this.page.click(this.avatar)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.administration)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.add_user)
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForLoadState('networkidle')
         
         await this.page.fill(this.first_name, polfirstname)
-        // await this.page.waitForTimeout(1000);
 
         await this.page.fill(this.last_name, pollastname)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.fill(this.email, polnewuseremail)
-        // await this.page.waitForTimeout(3000);
 
         await this.page.fill(this.manager, polmanager)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.click(this.slct_manager)
         await this.page.waitForTimeout(1000);
@@ -85,13 +78,12 @@ class AddUser
         await this.page.waitForTimeout(1000);
 
         await this.page.fill(this.new_password, polnewpassword)
-        // await this.page.waitForTimeout(2000);
 
         await this.page.fill(this.confirm_password, polconfirmpassword)
-        await this.page.waitForTimeout(1000);
 
         await this.page.click(this.submit)
-        // await this.page.waitForTimeout(2000);
+
+        await expect(this.page.locator(this.successmessage)).toBeVisible();
 
     }
 
