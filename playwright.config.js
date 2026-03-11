@@ -38,8 +38,14 @@ export default defineConfig({
 
   // },
 
+//   use: {
+//     trace: 'on-first-retry',
+//     video: 'retain-on-failure',
+//     screenshot: 'only-on-failure',
+//     permissions: ['notifications'],
+// },
   use: {
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
     permissions: ['notifications'],
